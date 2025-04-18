@@ -1,0 +1,14 @@
+jupyter
+jupyterlab
+numpy
+matplotlib
+tensorflow
+tensorflow_datasets
+torch
+torchvision
+opencv-python
+skimage
+tqdm
+transformers
+stanfordnlp
+tf-keras
