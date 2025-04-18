@@ -1,3 +1,5 @@
 datasets/*
+para_store/*
 test_platform.ipynb
 !dataset/.gitkeep
+!para_store/.gitkeep
