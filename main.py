@@ -5,6 +5,7 @@ from scr.NLP_processing import CreatDataset
 import scr.NLP_processing as nlp
 from scr.model import DistilBertForSentiment, TransformerTrainer
 from scr.model import inference
+import gdown
 
 """ Global Variables. """
 fixed_seed = 42
@@ -18,7 +19,7 @@ train_on_tuned_model = False
 model_load_path = "./para_store/DistilBert10e.pth"
 model_save_path = "./para_store/DistilBert_new.pth"
 # Model training hyper-parameters.
-num_epochs=1
+num_epochs=10
 batch_size=32
 learning_rate=2e-5
 max_grad_norm=1.0
@@ -28,6 +29,8 @@ restore=True
 num_labels = 3
 # Load data.
 data_df = pd.read_csv('./datasets/twitter_training.csv')
+# Google drive url pointing where the model is saved.
+url = "https://drive.google.com/uc?id=1jpYqb6BR0DRSYcWU5_s4mA2cKRhcAo0P"
 
 """ Environment Setup. """
 # Define GPU as device if possible and apply fixed seed to all processes.
@@ -36,6 +39,8 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # Print the used device and torch version.
 print("Using device:", device)
 print("PyTorch version:", torch.__version__)
+# Load the saved model (with tuned parameters only)
+gdown.download(url, model_load_path, quiet=False)
 
 def main():    
     """ Data Processing. """
